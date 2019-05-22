@@ -89,7 +89,7 @@ def select_file():
             if n[4] == "_" and n[-4:] == ".txt":
                 patient_datafiles.append(n)
         except:
-            print('Error occured - given filename is too short(at least 4 letters).')
+            print("", end="")
 
     cot = 1
     for n in patient_datafiles:
@@ -256,7 +256,7 @@ while while_controll == 0:
                 save_dict(patient_dict)
 
         else:
-            print("Patient data is corrupted")
+            print("File couldn't be verified with existing blockchain entries")
             choice = input("Do you want to correct the data and verify it again? Press (y/n)")
             if choice == "y":
                 patient_dict = modify_dict(patient_dict)
