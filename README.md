@@ -1,6 +1,7 @@
 # Medical Distributed Ledger Technology 
 
 Programming with Advanced Computer Languages - Python
+
 **Team Snakes**: Johanna Husson, Christopher Newson, Dominik Eitljörg, Dean van der Merwe
 
 ## Description
