@@ -1,6 +1,5 @@
 #import features required
 import hashlib, json, sys
-import hashlib as hasher
 import pickle
 import os
 from random import random
