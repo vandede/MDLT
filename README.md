@@ -12,7 +12,7 @@ This project creates a distributed ledger technology (DLT) to store patient data
 
 A patient file is stored as a dictionary. A hashing algorithm, which assigns a cryptographic key to its input (here, the input being a dictionary), ensures the integrity of patient data because: 1- It is impossible to have the same hash for two different inputs; 2- The exact same patient dictionary produces the same hash; 3- Conversely, any change to the dictionary modifies the hash. 
 
-A BC is automatically created when the program is started. The BC is only stored as long as the program is running. Every block includes an index number, the previous block’s hash and the hash of the patient data. Whenever the user changes his data, a new block is created with a new hash. Hashes of every action are saved in a list which can be visualised by the user. 
+A BC is automatically created when the program is started. The BC is only stored as long as the program is running. Every block includes an index number, the previous block’s hash and the hash of the patient data. Whenever the user changes his data, a new block is created with a new hash.
 
 When starting the program, the user is prompted to add a new patient file. After doing so he can also verify existing data, where the code checks the hashes from the previous blocks and uses this to verify whether the data was once created within the program or if it was created / altered by some third party. 
 
@@ -21,7 +21,7 @@ When starting the program, the user is prompted to add a new patient file. After
  
 *Figure 1: Visualisation of our blockchain technology for patient data.*
 
-The patient data itself is not stored on the BC, only the hash identifying it is stored. Therefore, a user cannot see the content of a patient file, but can only see the resulting hash to verify data has not been tampered with. 
+The patient data itself is not stored on the BC, only the hash identifying it is stored. Therefore, an unauthorised user cannot see the content of a patient file, but can only see the resulting hash. Hence, an authorised user can check that the data they have is correct and hasn't been tampered with.
 
 ## Instructions
 *Code has to be downloaded and run offline. Settings have to allow the code to save a local copy of the patient data.*
@@ -31,8 +31,8 @@ The patient data itself is not stored on the BC, only the hash identifying it is
 	3.	Alternatively, you can load an existing patient file to modify it (Option 2). In case of modification, a new hash is created and a new block is added to the BC. *Text Files must be saved in the working directory.*
 	4.	Finally, you can visualise the list of hashes stored on the BC (Option 3). 
 2.	Test the ability of the program to identify a corrupted file:
-	1.	First, run the program and enter at least one patient dictionary (let’s call it abcde1234) in it. Your patient file (abcde1234) is stored locally on your computer. The file name will start with the first two letters of the surname followed by the last two letters of the first name and end with a random number (e.g. John Doe's file would be "Dohn_86712950").
-	2.	When in the menu use *Option 2* and try to load one of the patient test data sets (e.g. "Apsa_45673575"). Receive a message *“File couldn’t be verified with existing BC entries"*: the hash does not correspond to any hash loaded on your current BC. 
+	1.	First, run the program and enter at least one patient dictionary (let’s call it abcde1234) in it. Your patient file (abcde1234) is stored locally on your computer. The file name will start with the first two letters of the surname followed by the last two letters of the first name and end with a random number (e.g. John Doe's file would be "Dohn_86712950.txt").
+	2.	When in the menu use *Option 2* and try to load one of the patient test data sets (e.g. "Apsa_45673575.txt"). Receive a message *“File couldn’t be verified with existing BC entries"*: the hash does not correspond to any hash loaded on your current BC. 
 	3.	When you are given the option to edit the data and thereby verify it this will add it to the BC. Thus, select "y".
 	4.	When given the option of modifying the current file or adding to it simply press *enter* to bypass the step, verify the data and add a new block to the BC.
 	5.	The BC will now recognise that the data is verified and hasn't been tampered with if it is checked again.
