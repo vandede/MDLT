@@ -24,14 +24,14 @@ When starting the program, the user is prompted to either add a new patient file
 The patient data itself is not stored on the blockchain, only the hash identifying it is stored. Therefore, a user cannot see the content of a patient file, but can only see the resulting hash to verify data has not been tampered with. 
 
 ## Instructions
-*Code has to be downloaded and run offline*
+*Code has to be downloaded and run offline. Settings have to allow the code to save a local copy of the patient data.*
 1.	Run the program to create a blockchain:
 	1.	You are asked to enter the first patient’s information. A new block is created. 
 	2.	You can later add new patients' files (Option 1). Every new file creates a new block on the BC. 
-	3.	Alternatively, you can load an existing patient file to modify it (Option 2). In case of modification, a new hash is created and a new block is added to the blockchain. *Text Files must be saved in the working directory*
+	3.	Alternatively, you can load an existing patient file to modify it (Option 2). In case of modification, a new hash is created and a new block is added to the blockchain. *Text Files must be saved in the working directory.*
 	4.	Finally, you can visualise the list of hashes stored on the blockchain (Option 3). 
 2.	Test the ability of the program to identify a corrupted file:
-	1.	After having run the program a first time and entered at least one patient dictionary (let’s call it abcde1234) in it, log out of the program (Option 4). Your patient file (abcde1234) is stored locally on your computer. 
+	1.	After having run the program a first time and entered at least one patient dictionary (let’s call it abcde1234) in it, log out of the program (Option 4). Your patient file (abcde1234) is stored locally on your computer. The file name will start with the first two letters of the surname followed by the last two letters of the first name and end with a random number (e.g. John Doe's file would be "Dohn_86712950").
 	2.	Start a new program and try to load the patient file you had created on the previous program (abcde1234). Receive a message *“File couldn’t be verified with existing blockchain entries"*: the new hash does not correspond to any hash loaded on your current blockchain. 
 	3.	Run program a first time ⇒ file stored locally. Close program. 
 	4.	Run program a second time ⇒ try to load file. Corrupted. 
