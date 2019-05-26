@@ -204,7 +204,7 @@ blockChain = [createGenesisBlock()]
 prevBlock = blockChain[0]
 patient_dict = create_patient_dict()
 BHRhash = hashMe(patient_dict)
-print("Patient Hash: "+ BHRhash) #Evtl. delete in the final version
+print("Patient Hash: "+ BHRhash)
 blockToAdd = createNextBlock(prevBlock)
 blockChain.append(blockToAdd)
 prevBlock = blockToAdd
@@ -226,7 +226,7 @@ while while_controll == 0:
         patient_dict = create_patient_dict()
         #hashes new information
         BHRhash = hashMe(patient_dict)
-        print("Patient Hash: "+ BHRhash) #Evtl. delete in the final version
+        print("Patient Hash: "+ BHRhash)
         blockToAdd = createNextBlock(prevBlock)
         blockChain.append(blockToAdd)
         prevBlock = blockToAdd
@@ -247,7 +247,7 @@ while while_controll == 0:
             if choice == "y":
                 patient_dict = modify_dict(patient_dict)
                 BHRhash = hashMe(patient_dict)
-                print("Patient Hash: "+ BHRhash) #Evtl. delete in the final version
+                print("Patient Hash: "+ BHRhash)
                 blockToAdd = createNextBlock(prevBlock)
                 blockChain.append(blockToAdd)
                 prevBlock = blockToAdd
@@ -261,7 +261,7 @@ while while_controll == 0:
             if choice == "y":
                 patient_dict = modify_dict(patient_dict)
                 BHRhash = hashMe(patient_dict)
-                print("Patient Hash: "+ BHRhash) #Evtl. delete in the final version
+                print("Patient Hash: "+ BHRhash)
                 blockToAdd = createNextBlock(prevBlock)
                 blockChain.append(blockToAdd)
                 prevBlock = blockToAdd
