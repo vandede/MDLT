@@ -18,8 +18,8 @@ import platform
 
 #create a new patient dictionary asking the 7 inputs from the patient and automatically saves it to working directory path
 def create_patient_dict():
-    surname = str(input("Please type your Surname: "))
-    firstname = str(input("Please type your First name: "))
+    surname = str(input("Please type your surname: "))
+    firstname = str(input("Please type your first name: "))
     birthdate = str(input("Please type your date of birth (DD.MM.YYYY): "))
     pat_id = surname[:2] + firstname[-2:] + '_' + str(int(random()*100000000))
     sex = str(input("Please type your sex (m or f): "))
@@ -36,7 +36,7 @@ def create_patient_dict():
         if diagnosis == '':
             break
         diagnoses.append(diagnosis)
-    print('Please repeat the process for medication prescribed to the patient')
+    print('Please repeat the process for medication prescribed to the patient:')
     prescribed_meds = []
     i = 0
     while 1:
@@ -256,8 +256,8 @@ while while_controll == 0:
                 save_dict(patient_dict)
 
         else:
-            print("File couldn't be verified with existing blockchain entries")
-            choice = input("Do you want to correct the data and verify it again? Press (y/n)")
+            print("File couldn't be verified with existing blockchain entries.")
+            choice = input("Do you want to correct the data and verify it again? Press (y/n): ")
             if choice == "y":
                 patient_dict = modify_dict(patient_dict)
                 BHRhash = hashMe(patient_dict)
@@ -277,8 +277,8 @@ while while_controll == 0:
             cot += 1
 
     elif first_choice == "4":
-        print("Are you sure you want to stop the program? If the Blockchain isn't saved all Patient Data can't be verifyed later")
-        choice = input("Press (y/n)")
+        print("Are you sure you want to stop the program? If the blockchain isn't saved all patient data can't be verified later!")
+        choice = input("Press (y/n): ")
         if choice == "y":
             break
 
