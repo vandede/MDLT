@@ -45,9 +45,9 @@ We could increase "tamper-proofness" by storing the patient data itself on an in
 
 ## Requirements
 
-None, all libraries come installed with Python. The program was tested for functionality in **XYZ**.
+None, all libraries come installed with Python. The program was tested for functionality in Spyder (Python 3.7) in Mac and Windows and PyCharm (Python 3.7) in Windows.
 
 ## Limitations
 Various factors limit the real-life usability of the code:
 * The blockchain can not be saved and accessed at a later point, thus it is not distributed
-* Hash is created each time the code is run and can load previous data, however only into the new hash
+* The hash is created each time the code is run. It can load previous, however only into the new hash
