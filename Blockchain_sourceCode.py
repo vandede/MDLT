@@ -44,7 +44,7 @@ def create_patient_dict():
         if meds == '':
             break
         prescribed_meds.append(meds)
-                          
+
     patientdict = {}
 
     for attribute in ('surname', 'firstname', 'birthdate', 'pat_id', 'sex', 'insurance',
@@ -137,7 +137,7 @@ def modify_dict(dictionary):
 def hashMe(msg=""):
     if type(msg)!=str:
         msg = json.dumps(msg,sort_keys=True)  # If we don't sort keys, we can't guarantee repeatability!
-        
+
     if sys.version_info.major == 2:
         return unicode(hashlib.sha256(msg).hexdigest(),'utf-8')
     else:
@@ -150,7 +150,7 @@ class Block:
         self.data = BHRhash
         self.previousHash = previousHash
         self.hash = self.hashBlock()
-#BC hashing function        
+#BC hashing function
     def hashBlock(self):
         hash_list = [self.index,self.data,self.previousHash]
         hash_from_list = hashMe(hash_list)
@@ -180,7 +180,7 @@ def check_patient_hash(blockChain,pat_hash):
     for n in blockChain:
         if return_data(n) == pat_hash:
             return True
-        
+
     return False
 
 
@@ -221,68 +221,71 @@ while while_controll == 0:
     print("Nr.4: Stop program")
     first_choice = input("Press Number 1-4: ")
 
-    if first_choice == "1":
-        patient_dict = create_patient_dict()
-        #hashes new information
-        BHRhash = hashMe(patient_dict)
-        print("Patient Hash: "+ BHRhash)
-        blockToAdd = createNextBlock(prevBlock)
-        blockChain.append(blockToAdd)
-        prevBlock = blockToAdd
-        print("Block %s has been added to the blockchain!" % (blockToAdd.index))
-        BChashes.append(blockToAdd.hash)
-        
+    try:
+        if first_choice == "1":
+            patient_dict = create_patient_dict()
+            #hashes new information
+            BHRhash = hashMe(patient_dict)
+            print("Patient Hash: "+ BHRhash)
+            blockToAdd = createNextBlock(prevBlock)
+            blockChain.append(blockToAdd)
+            prevBlock = blockToAdd
+            print("Block %s has been added to the blockchain!" % (blockToAdd.index))
+            BChashes.append(blockToAdd.hash)
 
 
-    elif first_choice == "2":
-        pat_id = select_file()
-        patient_dict = load_dict(pat_id)
-        BHRhash = hashMe(patient_dict)
-        print("Patient Hash: "+ BHRhash)
-        if check_patient_hash(blockChain,BHRhash):
-            print("Patient data is verified")
-            print(patient_dict)
-            choice = input("Do you want to change the data? Press (y/n)")
+
+        elif first_choice == "2":
+            pat_id = select_file()
+            patient_dict = load_dict(pat_id)
+            BHRhash = hashMe(patient_dict)
+            print("Patient Hash: "+ BHRhash)
+            if check_patient_hash(blockChain,BHRhash):
+                print("Patient data is verified")
+                print(patient_dict)
+                choice = input("Do you want to change the data? Press (y/n)")
+                if choice == "y":
+                    patient_dict = modify_dict(patient_dict)
+                    BHRhash = hashMe(patient_dict)
+                    print("Patient Hash: "+ BHRhash)
+                    blockToAdd = createNextBlock(prevBlock)
+                    blockChain.append(blockToAdd)
+                    prevBlock = blockToAdd
+                    print("Block %s has been added to the blockchain!" % (blockToAdd.index))
+                    BChashes.append(blockToAdd.hash)
+                    save_dict(patient_dict)
+
+            else:
+                print("File couldn't be verified with existing blockchain entries.")
+                choice = input("Do you want to correct the data and verify it again? Press (y/n): ")
+                if choice == "y":
+                    patient_dict = modify_dict(patient_dict)
+                    BHRhash = hashMe(patient_dict)
+                    print("Patient Hash: "+ BHRhash)
+                    blockToAdd = createNextBlock(prevBlock)
+                    blockChain.append(blockToAdd)
+                    prevBlock = blockToAdd
+                    print("Block %s has been added to the blockchain!" % (blockToAdd.index))
+                    BChashes.append(blockToAdd.hash)
+                    save_dict(patient_dict)
+
+        elif first_choice == "3":
+            cot = 0
+            for n in blockChain:
+                print("Block Nr. " + str(cot) + " Hash: ", end="")
+                print_data(n)
+                cot += 1
+
+        elif first_choice == "4":
+            print("Are you sure you want to stop the program? If the blockchain isn't saved all patient data can't be verified later!")
+            choice = input("Press (y/n): ")
             if choice == "y":
-                patient_dict = modify_dict(patient_dict)
-                BHRhash = hashMe(patient_dict)
-                print("Patient Hash: "+ BHRhash)
-                blockToAdd = createNextBlock(prevBlock)
-                blockChain.append(blockToAdd)
-                prevBlock = blockToAdd
-                print("Block %s has been added to the blockchain!" % (blockToAdd.index))
-                BChashes.append(blockToAdd.hash)
-                save_dict(patient_dict)
+                break
 
         else:
-            print("File couldn't be verified with existing blockchain entries.")
-            choice = input("Do you want to correct the data and verify it again? Press (y/n): ")
-            if choice == "y":
-                patient_dict = modify_dict(patient_dict)
-                BHRhash = hashMe(patient_dict)
-                print("Patient Hash: "+ BHRhash)
-                blockToAdd = createNextBlock(prevBlock)
-                blockChain.append(blockToAdd)
-                prevBlock = blockToAdd
-                print("Block %s has been added to the blockchain!" % (blockToAdd.index))
-                BChashes.append(blockToAdd.hash)
-                save_dict(patient_dict)
-       
-    elif first_choice == "3":
-        cot = 0
-        for n in blockChain:
-            print("Block Nr. " + str(cot) + " Hash: ", end="")
-            print_data(n)
-            cot += 1
-
-    elif first_choice == "4":
-        print("Are you sure you want to stop the program? If the blockchain isn't saved all patient data can't be verified later!")
-        choice = input("Press (y/n): ")
-        if choice == "y":
-            break
-
-    else:
-        print("Input was invalid")
+            print("Input was invalid")
+    except:
+        print("Error has occurred")
 
 print("Program is terminated")
 print("----------------------------------------------------")
