@@ -14,10 +14,10 @@ A patient file is stored as a dictionary. A hashing algorithm, which assigns a c
 
 A blockchain (BC) is automatically created when the program is started. The blockchain is only stored as long as the program is running. Every block includes an index number, the previous block’s hash and the hash of the patient data. Whenever the user changes his data, a new block is created with a new hash. Hashes of every action are saved in a list which can be visualised by the user. 
 
-When starting the program, the user is prompted to either add a new patient file or load an existing file. In the latter case, the code checks the hashes from the previous blocks and uses this to verify whether the data was once created within the program or if it was created / altered by some third party. 
+When starting the program, the user is prompted to add a new patient file. After doing so he can also verify existing data, where the code checks the hashes from the previous blocks and uses this to verify whether the data was once created within the program or if it was created / altered by some third party. 
 
 
-![Overview Architecture](https://user-images.githubusercontent.com/42732444/58156193-d8184d80-7c75-11e9-8620-4d5ce8b65fc1.png)
+![Overview Architecture](https://user-images.githubusercontent.com/42732444/58156193-d8184d80-7c75-11e9-8620-4d5ce8b65fc1.png "Overview Architecture")
  
 *Figure 1: Visualisation of our blockchain technology for patient data.*
 
@@ -31,10 +31,10 @@ The patient data itself is not stored on the blockchain, only the hash identifyi
 	3.	Alternatively, you can load an existing patient file to modify it (Option 2). In case of modification, a new hash is created and a new block is added to the blockchain. *Text Files must be saved in the working directory.*
 	4.	Finally, you can visualise the list of hashes stored on the blockchain (Option 3). 
 2.	Test the ability of the program to identify a corrupted file:
-	1.	After having run the program a first time and entered at least one patient dictionary (let’s call it abcde1234) in it, log out of the program (Option 4). Your patient file (abcde1234) is stored locally on your computer. The file name will start with the first two letters of the surname followed by the last two letters of the first name and end with a random number (e.g. John Doe's file would be "Dohn_86712950").
-	2.	Start a new program and try to load the patient file you had created on the previous program (abcde1234). Receive a message *“File couldn’t be verified with existing blockchain entries"*: the new hash does not correspond to any hash loaded on your current blockchain. 
-	3.	Run program a first time ⇒ file stored locally. Close program. 
-	4.	Run program a second time ⇒ try to load file. Corrupted. 
+	1.	First, run the program and enter at least one patient dictionary (let’s call it abcde1234) in it. Your patient file (abcde1234) is stored locally on your computer. The file name will start with the first two letters of the surname followed by the last two letters of the first name and end with a random number (e.g. John Doe's file would be "Dohn_86712950").
+	2.	When in the menu use *Option 2* and try to load one of the patient test data sets (e.g. "Apsa_45673575"). Receive a message *“File couldn’t be verified with existing blockchain entries"*: the hash does not correspond to any hash loaded on your current BC. 
+	3.	When you are given the option to edit the data and thereby verify it this will add it to the BC. Thus, select "y".
+	4.	When given the option of modifying the current file or adding to it simply press *enter* to bypass the step, verify the data and add a new block to the BC.
 3.	Terminate the program (Option 4)
 	1.	The blockchain is lost when the program is terminated. 
 
@@ -45,7 +45,7 @@ None, all libraries come installed with Python. The program was tested for funct
 ## Limitations
 
 Some factors limit the real-life usability of the code:
-* The blockchain can not be saved and accessed at a later point, thus it is not distributed. However, the main building blocks remain the same and the distribution would be an additional add-on to this code.
+* The blockchain cannot be saved and accessed at a later point, thus it is not distributed. However, the main building blocks remain the same and the distribution would be an additional add-on to this code.
 * The hash is created each time the code is run. It can load previous data, however only into the new hash.
 * We could increase "tamper-proofness" by storing the patient data itself on an individual blockchain but here the limits of blockchain technology could be reached quite quickly (for an extended article on blockchain limitations see [this link](https://malcoded.com/posts/storing-data-blockchain/ "Blog Post on Blockchain Limitations").
 
