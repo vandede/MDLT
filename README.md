@@ -29,11 +29,11 @@ There are various limitations to this program, both in regards to the blockchain
 We could increase "tamper-proofness" by storing the patient data itself on an individual blockchain but here the limits of blockchain technology could be reached quite quickly (for an extended article on blockchain limitations see [this link](https://malcoded.com/posts/storing-data-blockchain/ "Blog Post on Blockchain Limitations").
 
 ## Instructions
-
+*Code has to be downloaded and run offline*
 1.	Run the program to create a blockchain:
 	1.	You are asked to enter the first patient’s information. A new block is created. 
 	2.	You can later add new patients' files (Option 1). Every new file creates a new block on the BC. 
-	3.	Alternatively, you can load an existing patient file to modify it (Option 2). In case of modification, a new hash is created and a new block is added to the blockchain. 
+	3.	Alternatively, you can load an existing patient file to modify it (Option 2). In case of modification, a new hash is created and a new block is added to the blockchain. *Text Files must be saved in the working directory"
 	4.	Finally, you can visualise the list of hashes stored on the blockchain (Option 3). 
 2.	Test the ability of the program to identify a corrupted file:
 	1.	After having run the program a first time and entered at least one patient dictionary (let’s call it abcde1234) in it, log out of the program (Option 4). Your patient file (abcde1234) is stored locally on your computer. 
@@ -46,3 +46,8 @@ We could increase "tamper-proofness" by storing the patient data itself on an in
 ## Requirements
 
 None, all libraries come installed with Python. The program was tested for functionality in **XYZ**.
+
+## Limitations
+Various factors limit the real-life usability of the code:
+* The blockchain can not be saved and accessed at a later point, thus it is not distributed
+* Hash is created each time the code is run and can load previous data, however only into the new hash
