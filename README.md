@@ -4,7 +4,7 @@ Programming with Advanced Computer Languages - Python
 
 26 May 2019
 
-**Team Snakes**: Benedikt Behr, Benjamin Cook, Dominik Eitljörg, Johanna Husson, Christopher Newson, Dean van der Merwe.
+**Team Snakes**: Benjamin Cook, Dominik Eitljörg, Johanna Husson, Christopher Newson, Dean van der Merwe.
 
 ## Description
 
