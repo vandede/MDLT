@@ -15,33 +15,80 @@ import platform
 
 
 
-#create a new patient dictionary asking the 7 inputs from the patient and automatically saves it to working directory path
+#create a new patient dictionary asking the 8 inputs (+diagnoses and medication) from the patient and automatically saves it to working directory path
 def create_patient_dict():
-    surname = str(input("Please type your surname: "))
-    firstname = str(input("Please type your first name: "))
-    birthdate = str(input("Please type your date of birth (DD.MM.YYYY): "))
+    while True:
+        surname = str(input("Please type your surname: "))
+        if surname != "":
+            break
+        else:
+            print("Please make sure you have entered your surname.")
+    while True:
+        firstname = str(input("Please type your first name: "))
+        if firstname != "":
+            break
+        else:
+            print("Please make sure you have entered your first name.")
+    while True:
+        birthdate = str(input("Please type your date of birth (DD.MM.YYYY): "))
+        if len(birthdate) == 10:
+            break
+        else:
+            print("Please make sure you are inputting the date in the format 'DD.MM.YYYY'.")
     pat_id = surname[:2] + firstname[-2:] + '_' + str(int(random()*100000000))
-    sex = str(input("Please type your sex (m or f): "))
-    insurance = str(input("Please state your insurance type (private or public): "))
-    smoke = str(input("Please state if you smoke (yes or no): "))
-    sport = str(input("Please state how often you do sport a week: "))
-    citizenship = str(input("Please state your country of citizenship: "))
+    while True:
+        sex = str(input("Please type your sex ('m' or 'f'): "))
+        if sex == "m":
+            break
+        elif sex == "f":
+            break
+        else:
+            print("Please make sure you are inputting the correct letter ('m' or 'f').")
+    while True:
+        insurance = str(input("Please state your insurance type ('private' or 'public'): "))
+        if insurance == "private":
+            break
+        elif insurance == "public":
+            break
+        else:
+            print("Please make sure you are inputting in the correct format ('private' or 'public').")
+    while True:
+        smoke = str(input("Please state if you smoke ('y' or 'n'): "))
+        if smoke == "y":
+            break
+        elif smoke == "n":
+            break
+        else:
+            print("Please make sure you are inputting the correct letter ('y' or 'n').")
+    while True:
+        try:
+            sport = int(input("Please state how often you do sports a week (in numbers): "))
+        except:
+            print("Please make sure to enter integer values.")
+        else:
+            break
+    while True:
+        citizenship = str(input("Please state your country of citizenship: "))
+        if citizenship != "":
+            break
+        else:
+            print("Please make sure you have entered your country of citizenship.")
     diagnoses = []
-    print('Please list the diagnoses. Press <enter> to list the next diagnosis. If finished press <enter> again')
+    print("Please list the diagnoses. Press <enter> to list the next diagnosis. If finished press <enter> again.")
     i = 0
     while 1:
         i += 1
-        diagnosis = input('Enter diagnosis %d: ' % i)
-        if diagnosis == '':
+        diagnosis = input("Enter diagnosis %d: " % i)
+        if diagnosis == "":
             break
         diagnoses.append(diagnosis)
-    print('Please repeat the process for medication prescribed to the patient:')
+    print("Please repeat the process for medication prescribed to the patient:")
     prescribed_meds = []
     i = 0
     while 1:
         i += 1
-        meds = input('Enter medication %d: ' % i)
-        if meds == '':
+        meds = input("Enter medication %d: " % i)
+        if meds == "":
             break
         prescribed_meds.append(meds)
 
@@ -104,27 +151,51 @@ def select_file():
 #modify entries of dictionary; the dictionary has to be given in the function
 def modify_dict(dictionary):
     print(dictionary)
-    changes = input("Would you like to modify or add entries? press (mod/add): ")
+    changes = input("Would you like to modify or add entries? (Input 'mod' or 'add'): ")
     if changes == "add":
-        attribute = input("What attribute would you like to add?: ")
-        value = input("What should the value of this attribute be?: ")
+        while True:
+            attribute = input("What attribute would you like to add?: ")
+            if attribute != "":
+                break
+            else:
+                print("Please make sure you have entered an attribute.")
+        while True:
+            value = input("What should the value of this attribute be?: ")
+            if value != "":
+                break
+            else:
+                print("Please make sure you have entered a value.")
         dictionary[attribute] = value
-
-    elif changes == 'mod':
-        response = 'n'
-        while response == 'n':
-            print('\n')
-            print('Please type the corresponding title of the entry you wish to modify')
+        print("Dictionary has been modified.")
+    elif changes == "mod":
+        response = "n"
+        while response == "n":
+            print("\n")
+            print("Please type the corresponding title of the entry you wish to modify (note that pat_id cannot be changed):")
             for key, value in dictionary.items():
                 print(key, value)
-            modentry = input(': ')
-            response = input('Is' + ' ' + modentry + ' ' + 'the entry you wish to modify? (y/n) ')
-        if response == 'y':
-            newvalue = input("What should the value of" + ' ' + modentry + ' ' + "have? ")
+            while True:
+                modentry = input(": ")
+                if modentry != "":
+                    break
+                else:
+                    print("Please make sure you have entered a value.")
+            while True:
+                response = input("Is" + " " + modentry + " " + "the entry you wish to modify? (Input 'y' or 'n'): ")
+                if response != "":
+                    break
+                else:
+                    print("Please make sure you have entered a value. (Input 'y' or 'n'): ")
+        if response == "y":
+            while True:
+                newvalue = input("What should the value of" + " " + modentry + " " + "be? ")
+                if newvalue != "":
+                    break
+                else:
+                    print("Please make sure you have entered a value.")
             d1 = {modentry: newvalue}
             dictionary.update(d1)
-
-    print("dictionary has been modified")
+            print("Dictionary has been modified.")
     return dictionary
 
 ###############################################################################################################
@@ -217,9 +288,9 @@ while while_controll == 0:
     print("Options: ")
     print("Nr.1: Add new patient")
     print("Nr.2: Load existing patient data set")
-    print("Nr.3: Print Stored Hash Values")
+    print("Nr.3: Print stored hash values")
     print("Nr.4: Stop program")
-    first_choice = input("Press Number 1-4: ")
+    first_choice = input("Input Number 1-4: ")
 
     try:
         if first_choice == "1":
@@ -241,27 +312,26 @@ while while_controll == 0:
             BHRhash = hashMe(patient_dict)
             print("Patient Hash: "+ BHRhash)
             if check_patient_hash(blockChain,BHRhash):
-                print("Patient data is verified")
+                print("Patient data is verified.")
                 print(patient_dict)
-                choice = input("Do you want to change the data? Press (y/n)")
+                choice = input("Do you want to change the data? (Input 'y' or 'n'): ")
                 if choice == "y":
                     patient_dict = modify_dict(patient_dict)
                     BHRhash = hashMe(patient_dict)
-                    print("Patient Hash: "+ BHRhash)
+                    print("Patient hash: "+ BHRhash)
                     blockToAdd = createNextBlock(prevBlock)
                     blockChain.append(blockToAdd)
                     prevBlock = blockToAdd
                     print("Block %s has been added to the blockchain!" % (blockToAdd.index))
                     BChashes.append(blockToAdd.hash)
                     save_dict(patient_dict)
-
             else:
                 print("File couldn't be verified with existing blockchain entries.")
-                choice = input("Do you want to correct the data and verify it again? Press (y/n): ")
+                choice = input("Do you want to correct the data and verify it again? (Input 'y' or 'n'): ")
                 if choice == "y":
                     patient_dict = modify_dict(patient_dict)
                     BHRhash = hashMe(patient_dict)
-                    print("Patient Hash: "+ BHRhash)
+                    print("Patient hash: "+ BHRhash)
                     blockToAdd = createNextBlock(prevBlock)
                     blockChain.append(blockToAdd)
                     prevBlock = blockToAdd
@@ -277,15 +347,20 @@ while while_controll == 0:
                 cot += 1
 
         elif first_choice == "4":
-            print("Are you sure you want to stop the program? If the blockchain isn't saved all patient data can't be verified later!")
-            choice = input("Press (y/n): ")
+            while True:
+                print("Are you sure you want to stop the program? If the blockchain isn't saved all patient data can't be verified later!")
+                choice = input("Input 'y' or 'n': ")
+                if choice != "":
+                    break
+                else:
+                    print("Please make sure you have entered a value.")
             if choice == "y":
                 break
 
         else:
-            print("Input was invalid")
+            print("Input was invalid.")
     except:
-        print("Error has occurred")
+        print("Error has occurred.")
 
 print("Program is terminated")
 print("----------------------------------------------------")
