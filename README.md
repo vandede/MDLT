@@ -23,11 +23,6 @@ When starting the program, the user is prompted to either add a new patient file
 
 The patient data itself is not stored on the blockchain, only the hash identifying it is stored. Therefore, a user cannot see the content of a patient file, but can only see the resulting hash to verify data has not been tampered with. 
 
-## Limitations
-There are various limitations to this program, both in regards to the blockchain itself and to the funcitoning of this program itself.
-
-We could increase "tamper-proofness" by storing the patient data itself on an individual blockchain but here the limits of blockchain technology could be reached quite quickly (for an extended article on blockchain limitations see [this link](https://malcoded.com/posts/storing-data-blockchain/ "Blog Post on Blockchain Limitations").
-
 ## Instructions
 *Code has to be downloaded and run offline*
 1.	Run the program to create a blockchain:
@@ -48,6 +43,10 @@ We could increase "tamper-proofness" by storing the patient data itself on an in
 None, all libraries come installed with Python. The program was tested for functionality in Spyder (Python 3.7) in Mac and Windows and PyCharm (Python 3.7) in Windows.
 
 ## Limitations
-Various factors limit the real-life usability of the code:
-* The blockchain can not be saved and accessed at a later point, thus it is not distributed
-* The hash is created each time the code is run. It can load previous, however only into the new hash
+
+Some factors limit the real-life usability of the code:
+* The blockchain can not be saved and accessed at a later point, thus it is not distributed. However, the main building blocks remain the same and the distribution would be an additional add-on to this code.
+* The hash is created each time the code is run. It can load previous data, however only into the new hash.
+* We could increase "tamper-proofness" by storing the patient data itself on an individual blockchain but here the limits of blockchain technology could be reached quite quickly (for an extended article on blockchain limitations see [this link](https://malcoded.com/posts/storing-data-blockchain/ "Blog Post on Blockchain Limitations").
+
+All of the above limitations could be avoided with more resources but in the scope of this project we think the program is sufficient to showcase a use of blockchain for medical patient records.
