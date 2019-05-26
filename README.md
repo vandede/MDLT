@@ -23,6 +23,11 @@ When starting the program, the user is prompted to either add a new patient file
 
 The patient data itself is not stored on the blockchain, only the hash identifying it is stored. Therefore, a user cannot see the content of a patient file, but can only see the resulting hash to verify data has not been tampered with. 
 
+## Limitations
+There are various limitations to this program, both in regards to the blockchain itself and to the funcitoning of this program itself.
+
+We could increase "tamper-proofness" by storing the patient data itself on an individual blockchain but here the limits of blockchain technology could be reached quite quickly (for an extended article on blockchain limitations see [this link](https://malcoded.com/posts/storing-data-blockchain/ "Blog Post on Blockchain Limitations").
+
 ## Instructions
 
 1.	Run the program to create a blockchain:
@@ -40,4 +45,4 @@ The patient data itself is not stored on the blockchain, only the hash identifyi
 
 ## Requirements
 
-None, all libraries come installed with Python. 
+None, all libraries come installed with Python. The program was tested for functionality in **XYZ**.
